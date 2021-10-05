@@ -3,7 +3,7 @@ const Message = require("../models/message");
 
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+router.get("/", async (_request, response) => {
     try {
         const messages = await Message.find();
 
