@@ -13,6 +13,16 @@ router.get("/", async (_request, response) => {
     }
 });
 
+router.get("/:messageId", async (request, response) => {
+    try {
+        const messages = await Message.find({ _id: request.params.messageId });
+
+        response.json(messages);
+    } catch (error) {
+        response.json({ message: error })
+    }
+});
+
 router.post("/", async (request, response) => {
     const message = new Message({
         text: request.body.text,
@@ -27,5 +37,15 @@ router.post("/", async (request, response) => {
         response.json({ message: error });
     };
 });
+
+router.delete("/:messageId", async (request, response) => {
+    try {
+        const removedMessage = await Message.deleteOne({ _id: request.params.messageId })
+
+        response.json(removedMessage)
+    } catch (error) {
+        response.json({ message: error })
+    }
+})
 
 module.exports = router;
