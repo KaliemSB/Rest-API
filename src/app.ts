@@ -7,7 +7,12 @@ const app = express();
 const port = process.env.PORT || 8080;
 const messagesRouter = require("./routes/routes");
 
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200
+}));
 
 app.use(express.json());
 
