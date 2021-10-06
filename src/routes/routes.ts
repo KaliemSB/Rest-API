@@ -52,7 +52,7 @@ router.patch("/:messageId", async (request, response) => {
     try {
         const updatedMessage = await Message.findOneAndUpdate(
             { _id: request.params.messageId },
-            { $set: { text: request.body.text, author: request.body.author }},
+            { $set: { text: request.body.text, author: request.body.author } },
             { new: true }
         );
 
