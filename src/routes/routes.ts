@@ -9,8 +9,8 @@ router.get("/", async (_request, response) => {
 
         response.json(messages);
     } catch (error) {
-        response.json({ message: error })
-    }
+        response.json({ message: error });
+    };
 });
 
 router.get("/:messageId", async (request, response) => {
@@ -19,8 +19,8 @@ router.get("/:messageId", async (request, response) => {
 
         response.json(messages);
     } catch (error) {
-        response.json({ message: error })
-    }
+        response.json({ message: error });
+    };
 });
 
 router.post("/", async (request, response) => {
@@ -40,12 +40,26 @@ router.post("/", async (request, response) => {
 
 router.delete("/:messageId", async (request, response) => {
     try {
-        const removedMessage = await Message.findOneAndDelete({ _id: request.params.messageId })
+        const removedMessage = await Message.findOneAndDelete({ _id: request.params.messageId });
 
-        response.json(removedMessage)
+        response.json(removedMessage);
     } catch (error) {
-        response.json({ message: error })
-    }
-})
+        response.json({ message: error });
+    };
+});
+
+router.patch("/:messageId", async (request, response) => {
+    try {
+        const updatedMessage = await Message.findOneAndUpdate(
+            { _id: request.params.messageId },
+            { $set: { text: request.body.text, author: request.body.author }},
+            { new: true }
+        );
+
+        response.json(updatedMessage);
+    } catch (error) {
+        response.json({ message: error });
+    };
+});
 
 module.exports = router;
