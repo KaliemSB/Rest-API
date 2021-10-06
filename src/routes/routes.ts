@@ -40,7 +40,7 @@ router.post("/", async (request, response) => {
 
 router.delete("/:messageId", async (request, response) => {
     try {
-        const removedMessage = await Message.deleteOne({ _id: request.params.messageId })
+        const removedMessage = await Message.findOneAndDelete({ _id: request.params.messageId })
 
         response.json(removedMessage)
     } catch (error) {
