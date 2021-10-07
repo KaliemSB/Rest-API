@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Kaliem <61659501+KaliemSB@users.noreply.github.com>",
   "license": "MIT",
+  "engines": {
+    "node": "14.18.0",
+    "npm": "7.21.1"
+  },
   "scripts": {
     "dev": "ts-node-dev src/app.ts"
   },
