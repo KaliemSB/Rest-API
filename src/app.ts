@@ -18,10 +18,6 @@ app.use(express.json());
 
 app.use("/", messagesRouter);
 
-app.get("/", (_request, response) => {
-    response.send(`Server is running at ${PORT}`);
-});
-
 mongoose.connect(process.env.DATABASE_URL, () => {
     console.log("successful connection with the Database");
 });
