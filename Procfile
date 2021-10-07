@@ -1,1 +1,1 @@
-worker:ts-node-dev src/app.ts
+web:ts-node-dev src/app.ts
